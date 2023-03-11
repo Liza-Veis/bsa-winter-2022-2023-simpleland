@@ -1,1 +1,6 @@
-export { PermissionsApiPath } from 'shared/build/index.js';
+export {
+  ExceptionMessage,
+  HttpCode,
+  PermissionKey,
+  PermissionsApiPath,
+} from 'shared/build/index.js';

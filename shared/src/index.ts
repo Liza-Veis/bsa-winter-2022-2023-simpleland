@@ -50,6 +50,7 @@ export {
 export {
   type PermissionGetAllResponseDto,
   type PermissionGetByIdsResponseDto,
+  PermissionKey,
   PermissionsApiPath,
 } from './packages/permissions/permissions.js';
 export {

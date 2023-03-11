@@ -13,4 +13,5 @@ const permissionController = new PermissionController(
 );
 
 export { permissionController, permissionService };
+export { checkHasPermissions } from './libs/hooks/hooks.js';
 export { PermissionModel } from './permission.model.js';

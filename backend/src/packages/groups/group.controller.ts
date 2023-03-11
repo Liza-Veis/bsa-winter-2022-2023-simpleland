@@ -7,8 +7,9 @@ import {
 import { HttpCode } from '~/libs/packages/http/http.js';
 import { type ILogger } from '~/libs/packages/logger/logger.js';
 import { type GroupService } from '~/packages/groups/group.service.js';
+import { checkHasPermissions } from '~/packages/permissions/permissions.js';
 
-import { GroupsApiPath } from './libs/enums/enums.js';
+import { GroupsApiPath, PermissionKey } from './libs/enums/enums.js';
 import {
   type GroupCreateRequestDto,
   type GroupUpdateRequestDto,
@@ -43,12 +44,14 @@ class GroupController extends Controller {
     this.addRoute({
       path: GroupsApiPath.ROOT,
       method: 'GET',
+      preHandler: checkHasPermissions([PermissionKey.MANAGE_UAM]),
       handler: () => this.findAll(),
     });
 
     this.addRoute({
       path: GroupsApiPath.ID,
       method: 'GET',
+      preHandler: checkHasPermissions([PermissionKey.MANAGE_UAM]),
       handler: (options) => {
         const { params } = options as ApiHandlerOptions<{
           params: { id: number };
@@ -61,6 +64,7 @@ class GroupController extends Controller {
     this.addRoute({
       path: GroupsApiPath.ROOT,
       method: 'POST',
+      preHandler: checkHasPermissions([PermissionKey.MANAGE_UAM]),
       handler: (options) => {
         const { body } = options as ApiHandlerOptions<{
           body: GroupCreateRequestDto;
@@ -73,6 +77,7 @@ class GroupController extends Controller {
     this.addRoute({
       path: GroupsApiPath.ID,
       method: 'PUT',
+      preHandler: checkHasPermissions([PermissionKey.MANAGE_UAM]),
       handler: (options) => {
         const { params, body } = options as ApiHandlerOptions<{
           params: { id: number };
@@ -86,6 +91,7 @@ class GroupController extends Controller {
     this.addRoute({
       path: GroupsApiPath.ID,
       method: 'DELETE',
+      preHandler: checkHasPermissions([PermissionKey.MANAGE_UAM]),
       handler: (options) => {
         const { params } = options as ApiHandlerOptions<{
           params: { id: number };

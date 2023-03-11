@@ -1,4 +1,4 @@
-export { PermissionsApiPath } from './libs/enums/enums.js';
+export { PermissionKey, PermissionsApiPath } from './libs/enums/enums.js';
 export {
   type PermissionGetAllResponseDto,
   type PermissionGetByIdsResponseDto,
