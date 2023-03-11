@@ -1,6 +1,10 @@
 {
   "extends": "../tsconfig.json",
-  "include": ["src", "knexfile.ts"],
+  "include": [
+    "src",
+    "knexfile.ts",
+    "../shared/src/libs/enums/exception-message.enum.ts"
+  ],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "target": "ESNext",

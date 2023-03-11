@@ -4,6 +4,7 @@ import { type UserRepository } from '~/packages/users/user.repository.js';
 
 import {
   type UserGetAllResponseDto,
+  type UserGetByIdsResponseDto,
   type UserSignUpRequestDto,
   type UserSignUpResponseDto,
 } from './libs/types/types.js';
@@ -15,12 +16,16 @@ class UserService implements IService {
     this.userRepository = userRepository;
   }
 
-  public find(): ReturnType<IService['find']> {
-    return Promise.resolve(null);
-  }
-
   public async findAll(): Promise<UserGetAllResponseDto> {
     const items = await this.userRepository.findAll();
+
+    return {
+      items: items.map((it) => it.toObject()),
+    };
+  }
+
+  public async findByIds(ids: number[]): Promise<UserGetByIdsResponseDto> {
+    const items = await this.userRepository.findByIds(ids);
 
     return {
       items: items.map((it) => it.toObject()),
@@ -39,14 +44,6 @@ class UserService implements IService {
     );
 
     return user.toObject();
-  }
-
-  public update(): ReturnType<IService['update']> {
-    return Promise.resolve(null);
-  }
-
-  public delete(): ReturnType<IService['delete']> {
-    return Promise.resolve(true);
   }
 }
 

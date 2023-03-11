@@ -1,6 +1,9 @@
 {
   "extends": "../tsconfig.json",
-  "include": ["src"],
+  "include": [
+    "src",
+    "../backend/src/packages/groups/libs/enums/exception-message.enum.ts"
+  ],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "target": "ESNext",
