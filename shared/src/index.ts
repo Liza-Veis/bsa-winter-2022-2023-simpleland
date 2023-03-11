@@ -39,6 +39,8 @@ export {
   type GroupUpdateRequestDto,
   type GroupUpdateResponseDto,
   GroupsApiPath,
+  groupCreateValidationSchema,
+  groupUpdateValidationSchema,
 } from './packages/groups/groups.js';
 export {
   type GroupsToPermissionsCreateRequestDto,

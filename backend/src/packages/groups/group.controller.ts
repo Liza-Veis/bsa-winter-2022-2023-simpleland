@@ -14,6 +14,10 @@ import {
   type GroupCreateRequestDto,
   type GroupUpdateRequestDto,
 } from './libs/types/types.js';
+import {
+  groupCreateValidationSchema,
+  groupUpdateValidationSchema,
+} from './libs/validation-schemas/validation-schemas.js';
 
 /**
  * @swagger
@@ -64,6 +68,9 @@ class GroupController extends Controller {
     this.addRoute({
       path: GroupsApiPath.ROOT,
       method: 'POST',
+      validation: {
+        body: groupCreateValidationSchema,
+      },
       preHandler: checkHasPermissions([PermissionKey.MANAGE_UAM]),
       handler: (options) => {
         const { body } = options as ApiHandlerOptions<{
@@ -77,6 +84,9 @@ class GroupController extends Controller {
     this.addRoute({
       path: GroupsApiPath.ID,
       method: 'PUT',
+      validation: {
+        body: groupUpdateValidationSchema,
+      },
       preHandler: checkHasPermissions([PermissionKey.MANAGE_UAM]),
       handler: (options) => {
         const { params, body } = options as ApiHandlerOptions<{
