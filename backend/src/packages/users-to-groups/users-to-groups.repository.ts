@@ -2,7 +2,9 @@ import { type IRepository } from '~/libs/interfaces/interfaces.js';
 import { UsersToGroupsEntity } from '~/packages/users-to-groups/users-to-groups.entity.js';
 import { type UsersToGroupsModel } from '~/packages/users-to-groups/users-to-groups.model.js';
 
-class UsersToGroupsRepository implements IRepository {
+class UsersToGroupsRepository
+  implements Omit<IRepository, 'findAll' | 'findById' | 'update'>
+{
   private usersToGroupsModel: typeof UsersToGroupsModel;
 
   public constructor(usersToGroupsModel: typeof UsersToGroupsModel) {

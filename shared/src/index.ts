@@ -38,8 +38,8 @@ export {
   type GroupGetByIdResponseDto,
   type GroupUpdateRequestDto,
   type GroupUpdateResponseDto,
-  GroupsApiPath,
   groupCreateValidationSchema,
+  GroupsApiPath,
   groupUpdateValidationSchema,
 } from './packages/groups/groups.js';
 export {

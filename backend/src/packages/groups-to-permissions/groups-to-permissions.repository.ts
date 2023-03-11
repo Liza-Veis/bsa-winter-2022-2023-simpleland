@@ -2,7 +2,9 @@ import { type IRepository } from '~/libs/interfaces/interfaces.js';
 import { GroupsToPermissionsEntity } from '~/packages/groups-to-permissions/groups-to-permissions.entity.js';
 import { type GroupsToPermissionsModel } from '~/packages/groups-to-permissions/groups-to-permissions.model.js';
 
-class GroupsToPermissionsRepository implements IRepository {
+class GroupsToPermissionsRepository
+  implements Omit<IRepository, 'findAll' | 'findById' | 'update'>
+{
   private groupsToPermissionsModel: typeof GroupsToPermissionsModel;
 
   public constructor(

@@ -6,7 +6,9 @@ import {
   type PermissionGetByIdsResponseDto,
 } from './libs/types/types.js';
 
-class PermissionService implements IService {
+class PermissionService
+  implements Omit<IService, 'findById' | 'create' | 'update' | 'delete'>
+{
   private permissionRepository: PermissionRepository;
 
   public constructor(permissionRepository: PermissionRepository) {

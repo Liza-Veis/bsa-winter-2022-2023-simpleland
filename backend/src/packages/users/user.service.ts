@@ -9,7 +9,7 @@ import {
   type UserSignUpResponseDto,
 } from './libs/types/types.js';
 
-class UserService implements IService {
+class UserService implements Omit<IService, 'findById' | 'update' | 'delete'> {
   private userRepository: UserRepository;
 
   public constructor(userRepository: UserRepository) {

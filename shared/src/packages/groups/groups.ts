@@ -11,4 +11,4 @@ export {
 export {
   groupCreate as groupCreateValidationSchema,
   groupUpdate as groupUpdateValidationSchema,
-} from './libs/validation-schemas/validation-schemas';
+} from './libs/validation-schemas/validation-schemas.js';

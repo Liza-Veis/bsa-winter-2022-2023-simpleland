@@ -2,7 +2,9 @@ import { type IRepository } from '~/libs/interfaces/interfaces.js';
 import { PermissionEntity } from '~/packages/permissions/permission.entity.js';
 import { type PermissionModel } from '~/packages/permissions/permission.model.js';
 
-class PermissionRepository implements IRepository {
+class PermissionRepository
+  implements Omit<IRepository, 'findById' | 'create' | 'update' | 'delete'>
+{
   private permissionModel: typeof PermissionModel;
 
   public constructor(permissionModel: typeof PermissionModel) {
