@@ -48,12 +48,13 @@ class ServerApp implements IServerApp {
   }
 
   public addRoute(parameters: ServerAppRouteParameters): void {
-    const { path, method, handler, validation } = parameters;
+    const { path, method, handler, preHandler, validation } = parameters;
 
     this.app.route({
       url: path,
       method,
       handler,
+      preHandler,
       schema: {
         body: validation?.body,
       },

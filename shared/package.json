@@ -12,6 +12,7 @@
     "build": "tsc && tsc-alias"
   },
   "dependencies": {
+    "change-case": "4.1.2",
     "joi": "17.8.3"
   }
 }

@@ -50,6 +50,43 @@ erDiagram
     varchar email
     text password_hash
     text password_salt
+    int group_id FK
+  }
+
+  groups {
+      int id PK
+      dateTime created_at
+      dateTime updated_at
+      varchar name
+      varchar key
+  }
+
+  users_to_groups }|--|| groups : group_id
+  users_to_groups }|--|| users : user_id
+  users_to_groups {
+      int id PK
+      dateTime created_at
+      dateTime updated_at
+      int group_id FK "unique (group_id user_id)"
+      int user_id FK "unique (group_id user_id)"
+  }
+
+  permissions {
+      int id PK
+      dateTime created_at
+      dateTime updated_at
+      varchar name
+      varchar key
+  }
+
+  groups_to_permissions }|--|| permissions : permission_id
+  groups_to_permissions }|--|| groups : group_id
+  groups_to_permissions {
+      int id PK
+      dateTime created_at
+      dateTime updated_at
+      int permission_id FK "unique (permission_id group_id)"
+      int group_id FK "unique (permission_id group_id)"
   }
 
   %% mb user_details should content subscription_end_time col?
